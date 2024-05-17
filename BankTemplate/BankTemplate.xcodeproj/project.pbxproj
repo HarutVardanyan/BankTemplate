@@ -10,7 +10,6 @@
 		529306772BF791890031CD8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529306762BF791890031CD8B /* AppDelegate.swift */; };
 		529306792BF791890031CD8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529306782BF791890031CD8B /* SceneDelegate.swift */; };
 		5293067B2BF791890031CD8B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293067A2BF791890031CD8B /* ViewController.swift */; };
-		5293067E2BF791890031CD8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5293067C2BF791890031CD8B /* Main.storyboard */; };
 		529306802BF7918B0031CD8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5293067F2BF7918B0031CD8B /* Assets.xcassets */; };
 		529306832BF7918B0031CD8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 529306812BF7918B0031CD8B /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -20,7 +19,6 @@
 		529306762BF791890031CD8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		529306782BF791890031CD8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5293067A2BF791890031CD8B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5293067D2BF791890031CD8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5293067F2BF7918B0031CD8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		529306822BF7918B0031CD8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		529306842BF7918B0031CD8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,6 +35,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52733AD42BF7C7D0009AF4C0 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				529306762BF791890031CD8B /* AppDelegate.swift */,
+				529306782BF791890031CD8B /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		52733AD52BF7C7EE009AF4C0 /* SupportingFile */ = {
+			isa = PBXGroup;
+			children = (
+				5293067F2BF7918B0031CD8B /* Assets.xcassets */,
+				529306812BF7918B0031CD8B /* LaunchScreen.storyboard */,
+				529306842BF7918B0031CD8B /* Info.plist */,
+			);
+			path = SupportingFile;
+			sourceTree = "<group>";
+		};
+		52733AD62BF7C7F4009AF4C0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5293067A2BF791890031CD8B /* ViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		5293066A2BF791890031CD8B = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +81,9 @@
 		529306752BF791890031CD8B /* BankTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				529306762BF791890031CD8B /* AppDelegate.swift */,
-				529306782BF791890031CD8B /* SceneDelegate.swift */,
-				5293067A2BF791890031CD8B /* ViewController.swift */,
-				5293067C2BF791890031CD8B /* Main.storyboard */,
-				5293067F2BF7918B0031CD8B /* Assets.xcassets */,
-				529306812BF7918B0031CD8B /* LaunchScreen.storyboard */,
-				529306842BF7918B0031CD8B /* Info.plist */,
+				52733AD42BF7C7D0009AF4C0 /* Application */,
+				52733AD52BF7C7EE009AF4C0 /* SupportingFile */,
+				52733AD62BF7C7F4009AF4C0 /* View */,
 			);
 			path = BankTemplate;
 			sourceTree = "<group>";
@@ -127,7 +148,6 @@
 			files = (
 				529306832BF7918B0031CD8B /* LaunchScreen.storyboard in Resources */,
 				529306802BF7918B0031CD8B /* Assets.xcassets in Resources */,
-				5293067E2BF791890031CD8B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,14 +167,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		5293067C2BF791890031CD8B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5293067D2BF791890031CD8B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		529306812BF7918B0031CD8B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -288,10 +300,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BankTemplate/Info.plist;
+				INFOPLIST_FILE = BankTemplate/SupportingFile/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -315,10 +326,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BankTemplate/Info.plist;
+				INFOPLIST_FILE = BankTemplate/SupportingFile/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
