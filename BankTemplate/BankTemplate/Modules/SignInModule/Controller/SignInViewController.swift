@@ -43,7 +43,13 @@ final class SignInViewController: UIViewController {
             static let emailPassword = "Password"
             static let signUpButtonColor = "signUpButtonColor"
             static let iDontHaveAccaount = "Don't have an account yet?"
+            static let logIn = "Harut24@gmail.com"
             }
+        enum LogInPassword {
+            static let logIn = "Harut24@gmail.com"
+            static let password = "123456"
+            static let alert = "Please enter both email and password"
+        }
     }
     
     //MARK: - Visual Components
@@ -60,7 +66,7 @@ final class SignInViewController: UIViewController {
         let textEmail = UITextField()
         
         textEmail.backgroundColor = UIColor(named: Constants.Texts.textEmailBackColor)
-        textEmail.text = Constants.Texts.emailText
+        textEmail.placeholder = Constants.Texts.emailText
         textEmail.textColor = UIColor(named: Constants.Texts.textColor)
         textEmail.font = UIFont.systemFont(ofSize: 21)
         textEmail.borderStyle = .roundedRect
@@ -74,7 +80,7 @@ final class SignInViewController: UIViewController {
         let textPass = UITextField()
         
         textPass.backgroundColor = UIColor(named: Constants.Texts.textEmailBackColor)
-        textPass.text = Constants.Texts.emailPassword
+        textPass.placeholder = Constants.Texts.emailPassword
         textPass.textColor = UIColor(named: Constants.Texts.textColor)
         textPass.font = UIFont.systemFont(ofSize: 21)
         textPass.borderStyle = .roundedRect
@@ -90,6 +96,7 @@ final class SignInViewController: UIViewController {
         logButton.setTitle("Sign In", for: .normal)
         logButton.setTitleColor(UIColor(named: "buttonTitleColor"), for: .normal)
         logButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
+        logButton.addTarget(self, action: #selector(logInButtonTapped), for: .touchUpInside)
 
         return logButton
     }()
@@ -125,6 +132,7 @@ final class SignInViewController: UIViewController {
         
         setupSubviews()
         configureConstraints()
+        setupTextFieldDelegates()
     }
     
     //MARK: - Private Methods
@@ -145,6 +153,32 @@ final class SignInViewController: UIViewController {
         let signUpViewController = SignUpViewController()
         signUpViewController.modalPresentationStyle = .fullScreen
         present(signUpViewController, animated: true, completion: nil)
+    }
+    
+    @objc private func logInButtonTapped() {
+        guard let email = emailTextField.text, let password = passwordlTextField.text else {
+            showAlert(message: "Please enter both email and password")
+            return
+        }
+        
+        if email == Constants.LogInPassword.logIn && password == Constants.LogInPassword.password {
+            let logInClientsPagesViewController = ClientsPagesViewController()
+            logInClientsPagesViewController.modalPresentationStyle = .fullScreen
+            present(logInClientsPagesViewController, animated: true, completion: nil)
+        } else {
+            showAlert(message: "Incorrect email or password")
+        }
+    }
+    
+    private func setupTextFieldDelegates() {
+        emailTextField.delegate = self
+        passwordlTextField.delegate = self
+    }
+    
+    private func showAlert(message: String) {
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
     
     private func configureConstraints() {
@@ -283,3 +317,14 @@ extension SignInViewController{
    }
 }
 
+extension SignInViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
+        if textField == emailTextField {
+            passwordlTextField.becomeFirstResponder()
+        } else {
+            view.endEditing(true)
+        }
+        return false
+    }
+}
