@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		52733AE42BF7CDCE009AF4C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52733AE32BF7CDCE009AF4C0 /* AppDelegate.swift */; };
 		52733AE62BF7CDCE009AF4C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52733AE52BF7CDCE009AF4C0 /* SceneDelegate.swift */; };
-		52733AE82BF7CDCE009AF4C0 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52733AE72BF7CDCE009AF4C0 /* SignInViewController.swift */; };
 		52733AED2BF7CDD0009AF4C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52733AEC2BF7CDD0009AF4C0 /* Assets.xcassets */; };
 		52733AF02BF7CDD0009AF4C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52733AEE2BF7CDD0009AF4C0 /* LaunchScreen.storyboard */; };
 		52752B052C00C3F60095A0BA /* ClientsPagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52752B042C00C3F60095A0BA /* ClientsPagesViewController.swift */; };
 		52775AE02BFF42660054BCCA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52775ADF2BFF42660054BCCA /* SignUpViewController.swift */; };
+		527B3DF82C035D9000E745D6 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527B3DF72C035D9000E745D6 /* SignInViewController.swift */; };
 		52D513982BFCB80D00CB6A9D /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52D513972BFCB80D00CB6A9D /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -21,12 +21,12 @@
 		52733AE02BF7CDCE009AF4C0 /* BankTemplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BankTemplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52733AE32BF7CDCE009AF4C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52733AE52BF7CDCE009AF4C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		52733AE72BF7CDCE009AF4C0 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		52733AEC2BF7CDD0009AF4C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52733AEF2BF7CDD0009AF4C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52733AF12BF7CDD0009AF4C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52752B042C00C3F60095A0BA /* ClientsPagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsPagesViewController.swift; sourceTree = "<group>"; };
 		52775ADF2BFF42660054BCCA /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		527B3DF72C035D9000E745D6 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		52D513972BFCB80D00CB6A9D /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,7 +149,7 @@
 		5280AE7E2BF7DD0500E93481 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				52733AE72BF7CDCE009AF4C0 /* SignInViewController.swift */,
+				527B3DF72C035D9000E745D6 /* SignInViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -264,8 +264,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52733AE82BF7CDCE009AF4C0 /* SignInViewController.swift in Sources */,
 				52752B052C00C3F60095A0BA /* ClientsPagesViewController.swift in Sources */,
+				527B3DF82C035D9000E745D6 /* SignInViewController.swift in Sources */,
 				52733AE42BF7CDCE009AF4C0 /* AppDelegate.swift in Sources */,
 				52775AE02BFF42660054BCCA /* SignUpViewController.swift in Sources */,
 				52733AE62BF7CDCE009AF4C0 /* SceneDelegate.swift in Sources */,
