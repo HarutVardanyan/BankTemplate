@@ -163,7 +163,7 @@ final class SignInViewController: UIViewController {
         
         if email == Constants.LogInPassword.logIn && password == Constants.LogInPassword.password {
             
-            let logInHomeScreenViewController = HomeScreenViewController(data: Client(name: "Harut", avatar: "avatar1", card: "1234 5678 9012 3456", account: "account 1", balance: 1092, cardDate: "07/24", id: "1"))
+            let logInHomeScreenViewController = HomeScreenViewController(id: "1")
             logInHomeScreenViewController.modalPresentationStyle = .fullScreen
             present(logInHomeScreenViewController, animated: true, completion: nil)
         } else {
