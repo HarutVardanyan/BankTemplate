@@ -11,9 +11,15 @@
 		52733AE62BF7CDCE009AF4C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52733AE52BF7CDCE009AF4C0 /* SceneDelegate.swift */; };
 		52733AED2BF7CDD0009AF4C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52733AEC2BF7CDD0009AF4C0 /* Assets.xcassets */; };
 		52733AF02BF7CDD0009AF4C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52733AEE2BF7CDD0009AF4C0 /* LaunchScreen.storyboard */; };
-		52752B052C00C3F60095A0BA /* ClientsPagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52752B042C00C3F60095A0BA /* ClientsPagesViewController.swift */; };
 		52775AE02BFF42660054BCCA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52775ADF2BFF42660054BCCA /* SignUpViewController.swift */; };
 		527B3DF82C035D9000E745D6 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527B3DF72C035D9000E745D6 /* SignInViewController.swift */; };
+		527B3DFC2C03600500E745D6 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527B3DFB2C03600500E745D6 /* NetworkService.swift */; };
+		527B3E002C0363A300E745D6 /* Clients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527B3DFF2C0363A300E745D6 /* Clients.swift */; };
+		527B3E062C0383E300E745D6 /* AvatarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527B3E052C0383E300E745D6 /* AvatarTableViewCell.swift */; };
+		527B3E082C0383F900E745D6 /* CardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527B3E072C0383F800E745D6 /* CardTableViewCell.swift */; };
+		527B3E0A2C03841200E745D6 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527B3E092C03841200E745D6 /* InfoTableViewCell.swift */; };
+		527B3E112C03869400E745D6 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527B3E102C03869400E745D6 /* UIView+Extension.swift */; };
+		527B3E142C0387D100E745D6 /* PrepareForAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527B3E132C0387D100E745D6 /* PrepareForAutoLayout.swift */; };
 		52D513982BFCB80D00CB6A9D /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52D513972BFCB80D00CB6A9D /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -24,9 +30,15 @@
 		52733AEC2BF7CDD0009AF4C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52733AEF2BF7CDD0009AF4C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52733AF12BF7CDD0009AF4C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		52752B042C00C3F60095A0BA /* ClientsPagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsPagesViewController.swift; sourceTree = "<group>"; };
 		52775ADF2BFF42660054BCCA /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		527B3DF72C035D9000E745D6 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		527B3DFB2C03600500E745D6 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		527B3DFF2C0363A300E745D6 /* Clients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clients.swift; sourceTree = "<group>"; };
+		527B3E052C0383E300E745D6 /* AvatarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarTableViewCell.swift; sourceTree = "<group>"; };
+		527B3E072C0383F800E745D6 /* CardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableViewCell.swift; sourceTree = "<group>"; };
+		527B3E092C03841200E745D6 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
+		527B3E102C03869400E745D6 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		527B3E132C0387D100E745D6 /* PrepareForAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareForAutoLayout.swift; sourceTree = "<group>"; };
 		52D513972BFCB80D00CB6A9D /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,8 +73,11 @@
 			isa = PBXGroup;
 			children = (
 				52733AF92BF7CDF9009AF4C0 /* Application */,
+				527B3DF92C035FCE00E745D6 /* Services */,
 				52733AF82BF7CDF4009AF4C0 /* SupportingFile */,
 				5280AE7A2BF7DCD100E93481 /* Modules */,
+				527B3E0B2C03852500E745D6 /* Extensions */,
+				527B3E122C03878600E745D6 /* Helpers */,
 			);
 			path = BankTemplate;
 			sourceTree = "<group>";
@@ -94,20 +109,19 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
-		52752B002C00C3230095A0BA /* ClientsPagesModule */ = {
+		52752B002C00C3230095A0BA /* HomeScreenModule */ = {
 			isa = PBXGroup;
 			children = (
 				52752B032C00C3AD0095A0BA /* Model */,
 				52752B022C00C3A90095A0BA /* View */,
 				52752B012C00C3A60095A0BA /* Controller */,
 			);
-			path = ClientsPagesModule;
+			path = HomeScreenModule;
 			sourceTree = "<group>";
 		};
 		52752B012C00C3A60095A0BA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				52752B042C00C3F60095A0BA /* ClientsPagesViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -115,6 +129,9 @@
 		52752B022C00C3A90095A0BA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				527B3E052C0383E300E745D6 /* AvatarTableViewCell.swift */,
+				527B3E072C0383F800E745D6 /* CardTableViewCell.swift */,
+				527B3E092C03841200E745D6 /* InfoTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -126,12 +143,61 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		527B3DF92C035FCE00E745D6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				527B3DFA2C035FEC00E745D6 /* NetworkService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		527B3DFA2C035FEC00E745D6 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				527B3DFB2C03600500E745D6 /* NetworkService.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		527B3DFD2C03636200E745D6 /* ProfileModule */ = {
+			isa = PBXGroup;
+			children = (
+				527B3DFE2C03638800E745D6 /* Module */,
+			);
+			path = ProfileModule;
+			sourceTree = "<group>";
+		};
+		527B3DFE2C03638800E745D6 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				527B3DFF2C0363A300E745D6 /* Clients.swift */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		527B3E0B2C03852500E745D6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				527B3E102C03869400E745D6 /* UIView+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		527B3E122C03878600E745D6 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				527B3E132C0387D100E745D6 /* PrepareForAutoLayout.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		5280AE7A2BF7DCD100E93481 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				527B3DFD2C03636200E745D6 /* ProfileModule */,
 				5280AE7D2BF7DCED00E93481 /* SignInModule */,
 				52857C082BFD325D0076D8FB /* SignUpModule */,
-				52752B002C00C3230095A0BA /* ClientsPagesModule */,
+				52752B002C00C3230095A0BA /* HomeScreenModule */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -264,10 +330,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52752B052C00C3F60095A0BA /* ClientsPagesViewController.swift in Sources */,
+				527B3E112C03869400E745D6 /* UIView+Extension.swift in Sources */,
+				527B3E0A2C03841200E745D6 /* InfoTableViewCell.swift in Sources */,
+				527B3E002C0363A300E745D6 /* Clients.swift in Sources */,
 				527B3DF82C035D9000E745D6 /* SignInViewController.swift in Sources */,
 				52733AE42BF7CDCE009AF4C0 /* AppDelegate.swift in Sources */,
+				527B3E142C0387D100E745D6 /* PrepareForAutoLayout.swift in Sources */,
 				52775AE02BFF42660054BCCA /* SignUpViewController.swift in Sources */,
+				527B3DFC2C03600500E745D6 /* NetworkService.swift in Sources */,
+				527B3E062C0383E300E745D6 /* AvatarTableViewCell.swift in Sources */,
+				527B3E082C0383F900E745D6 /* CardTableViewCell.swift in Sources */,
 				52733AE62BF7CDCE009AF4C0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

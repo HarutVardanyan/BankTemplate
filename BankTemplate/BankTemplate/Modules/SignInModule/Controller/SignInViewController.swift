@@ -162,9 +162,10 @@ final class SignInViewController: UIViewController {
         }
         
         if email == Constants.LogInPassword.logIn && password == Constants.LogInPassword.password {
-            let logInClientsPagesViewController = ClientsPagesViewController()
-            logInClientsPagesViewController.modalPresentationStyle = .fullScreen
-            present(logInClientsPagesViewController, animated: true, completion: nil)
+            
+            let logInHomeScreenViewController = HomeScreenViewController(data: Client(name: "Harut", avatar: "avatar1", card: "1234 5678 9012 3456", account: "account 1", balance: 1092, cardDate: "07/24", id: "1"))
+            logInHomeScreenViewController.modalPresentationStyle = .fullScreen
+            present(logInHomeScreenViewController, animated: true, completion: nil)
         } else {
             showAlert(message: "Incorrect email or password")
         }
