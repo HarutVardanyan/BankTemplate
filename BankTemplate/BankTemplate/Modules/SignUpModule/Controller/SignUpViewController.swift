@@ -129,15 +129,16 @@ final class SignUpViewController: UIViewController {
     //MARK: - Private Methods
     
     private func setupSubviews(){
-        view.backgroundColor = UIColor(named: "singnUpBackColor")
+        view.addSubviews([
         
-        view.addSubview(signUpLogo)
-        view.addSubview(emailTextField)
-        view.addSubview(passwordlTextField)
-        view.addSubview(signUpButton)
-        view.addSubview(goSignInButton)
-        view.addSubview(haveLabel)
-
+            signUpLogo,
+            emailTextField,
+            passwordlTextField,
+            signUpButton,
+            goSignInButton,
+            haveLabel
+        ])
+        view.backgroundColor = UIColor(named: "singnUpBackColor")
     }
     
     @objc private func signInButtonTapped() {
@@ -147,12 +148,6 @@ final class SignUpViewController: UIViewController {
     }
     
     private func configureConstraints() {
-        signUpLogo.translatesAutoresizingMaskIntoConstraints = false
-        emailTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordlTextField.translatesAutoresizingMaskIntoConstraints = false
-        signUpButton.translatesAutoresizingMaskIntoConstraints = false
-        goSignInButton.translatesAutoresizingMaskIntoConstraints = false
-        haveLabel.translatesAutoresizingMaskIntoConstraints = false
 
         configureSignUpLogoConstraints()
         configureTextFieldEmailConstraints()

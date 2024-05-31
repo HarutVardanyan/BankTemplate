@@ -12,7 +12,7 @@ final class AvatarTableViewCell: UITableViewCell {
     
     // MARK: - Constants
     
-    let identifier = "AvatarTableViewCell"
+   static let identifier = "AvatarTableViewCell"
     
     enum Constans {
         enum Text{

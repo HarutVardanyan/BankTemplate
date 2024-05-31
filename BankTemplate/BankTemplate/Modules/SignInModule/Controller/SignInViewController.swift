@@ -43,11 +43,10 @@ final class SignInViewController: UIViewController {
             static let emailPassword = "Password"
             static let signUpButtonColor = "signUpButtonColor"
             static let iDontHaveAccaount = "Don't have an account yet?"
-            static let logIn = "Harut24@gmail.com"
             }
         enum LogInPassword {
-            static let logIn = "Harut24@gmail.com"
-            static let password = "123456"
+            static let logIn = "1"
+            static let password = "1"
             static let alert = "Please enter both email and password"
         }
     }
@@ -138,15 +137,16 @@ final class SignInViewController: UIViewController {
     //MARK: - Private Methods
     
     private func setupSubviews(){
+        view.addSubviews([
+            
+            signInLogo,
+            emailTextField,
+            passwordlTextField,
+            signInButton,
+            goSignUpButton,
+            dontHaveLabel
+        ])
         view.backgroundColor = UIColor(named: "signInBackColor")
-        
-        view.addSubview(signInLogo)
-        view.addSubview(emailTextField)
-        view.addSubview(passwordlTextField)
-        view.addSubview(signInButton)
-        view.addSubview(goSignUpButton)
-        view.addSubview(dontHaveLabel)
-
     }
     
     @objc private func signUpButtonTapped() {
@@ -183,12 +183,6 @@ final class SignInViewController: UIViewController {
     }
     
     private func configureConstraints() {
-        signInLogo.translatesAutoresizingMaskIntoConstraints = false
-        emailTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordlTextField.translatesAutoresizingMaskIntoConstraints = false
-        signInButton.translatesAutoresizingMaskIntoConstraints = false
-        goSignUpButton.translatesAutoresizingMaskIntoConstraints = false
-        dontHaveLabel.translatesAutoresizingMaskIntoConstraints = false
         
         configureSignInLogoConstraints()
         configureTextFieldEmailConstraints()
