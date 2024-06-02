@@ -1,0 +1,193 @@
+//
+//  MyCredits.swift
+//  BankTemplate
+//
+//  Created by MacBook Pro on 6/2/24.
+//
+
+import UIKit
+
+final class MyCredits: UIViewController {
+    
+    // MARK: - Constants
+    
+    let creditsCellType: [CreditsCellType] = [
+        .creditsId, .creditsDate, .creditsAmount
+    ]
+    
+    enum Constants {
+        enum Insets {
+            static let top: CGFloat = 23
+            static let leading: CGFloat = 30
+            static let trailing: CGFloat = -30
+            static let topPageLabel: CGFloat = 55
+            static let heightPageLabel: CGFloat = 41
+        }
+        enum Color {
+            static let creditsBackgrundColor = "MyCreditsBackgrundColor"
+            static let pageNameColor = "PageNameColor"
+        }
+        enum Texts {
+            static let pagenaameText = "My Credits"
+        }
+    }
+    
+    // MARK: - Visual Components
+    
+    private lazy var creditsTableView: UITableView = {
+        let tabelView = UITableView()
+        tabelView.separatorStyle = .none
+        tabelView.backgroundColor = .white
+        tabelView.showsVerticalScrollIndicator = false
+        tabelView.isScrollEnabled = false
+        tabelView.dataSource = self
+        tabelView.delegate = self
+        
+        return tabelView
+    }()
+    
+    let pageNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = Constants.Texts.pagenaameText
+        label.font = .systemFont(ofSize: 25, weight: .bold )
+        label.textColor = UIColor(named: Constants.Color.pageNameColor)
+        
+        return label
+    }()
+    
+    // MARK: - Private Propertis
+    
+    private var credits: Credits?
+    let networkService = NetworkService()
+    let id: String
+    
+    init(id: String) {
+        self.id = id
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Life Cycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupSubviews()
+        configureSubviews()
+        setupTableView()
+    }
+    
+    // MARK: - Private Methodes
+    
+    private func setupSubviews() {
+        view.addSubviews([
+            creditsTableView,
+            pageNameLabel
+        ])
+        view.backgroundColor = UIColor(named: Constants.Color.creditsBackgrundColor)
+    }
+    
+    private func configureSubviews() {
+        configureUserInfoTableViewConstraints ()
+        configurePageNameLabelConstraints()
+    }
+    
+    private func setupTableView() {
+        
+        creditsTableView.register(
+            CreditsInfoTableViewCell.self,
+            forCellReuseIdentifier:
+                CreditsInfoTableViewCell.identifier
+        )
+    }
+    
+}
+
+extension MyCredits {
+    private func configureUserInfoTableViewConstraints() {
+        NSLayoutConstraint.activate([
+            creditsTableView.topAnchor.constraint(
+                equalTo: pageNameLabel.bottomAnchor,
+                constant: Constants.Insets.top
+                ),
+            creditsTableView.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: Constants.Insets.leading
+                ),
+            creditsTableView.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor,
+                constant: Constants.Insets.trailing
+                ),
+            creditsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor
+                )
+        ])
+    }
+}
+
+extension MyCredits {
+    private func configurePageNameLabelConstraints() {
+        NSLayoutConstraint.activate([
+            pageNameLabel.topAnchor.constraint(
+                equalTo: view.topAnchor,
+                constant: Constants.Insets.topPageLabel
+            ),
+            pageNameLabel.centerXAnchor.constraint(
+                equalTo: view.centerXAnchor
+            ),
+            pageNameLabel.heightAnchor.constraint(
+                equalToConstant: Constants.Insets.heightPageLabel
+            )
+        ])
+    }
+}
+
+//MARK: - MyCredits + UITableViewDataSource
+
+extension MyCredits: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        creditsCellType.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let cellType = creditsCellType[indexPath.row]
+
+        switch cellType {
+        case .creditsId:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: CreditsInfoTableViewCell.identifier,
+                for: indexPath
+            ) as? CreditsInfoTableViewCell
+            else {return UITableViewCell() }
+
+            cell.configure(creditsIdLabel: "", dateNumberLabel: "", priceLabel: 10
+                
+            )
+            return cell
+        default:
+            return UITableViewCell()
+        }
+    }
+}
+    
+    //MARK: - MyCredits + UITableViewDelegate
+    
+extension MyCredits: UITableViewDelegate {
+        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            let cellType = creditsCellType[indexPath.row]
+            
+            switch cellType {
+            case .creditsId:
+                return 150
+            case .creditsDate:
+                return 150
+            case .creditsAmount:
+                return 150
+            default:
+                return 50
+            }
+        }
+    }

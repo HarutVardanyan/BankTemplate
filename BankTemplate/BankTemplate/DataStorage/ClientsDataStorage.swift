@@ -13,7 +13,7 @@ struct ClientsDataStorage {
             name: "Harutyun Vardanyan",
             avatar: "avatar1",
             cardNumber: "1234 5678 9012 3456",
-            account: "account 1",
+            account: "123456789",
             balance: 1092,
             cardDate: "07/24",
             id: "1"

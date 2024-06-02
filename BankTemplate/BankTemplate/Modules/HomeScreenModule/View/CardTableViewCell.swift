@@ -20,6 +20,9 @@ final class CardTableViewCell: UITableViewCell {
             static let trailing: CGFloat = -30
             static let height: CGFloat = 30
         }
+        enum Text{
+            static let cardColor = "cardBackground"
+        }
     }
     
     // MARK: - Visual Components
@@ -48,6 +51,8 @@ final class CardTableViewCell: UITableViewCell {
         return label
     }()
     
+    // MARK: - Configuration
+    
     public func configure(
         cardNumber: String,
         cardDates: String,
@@ -56,7 +61,7 @@ final class CardTableViewCell: UITableViewCell {
         self.cardNumberLabel.text = cardNumber
         self.cardDateLabel.text = cardDates
         self.cardNameLabel.text = cardName
-        contentView.backgroundColor = UIColor(named: "cardBackground")
+        contentView.backgroundColor = UIColor(named: Constans.Text.cardColor)
         contentView.layer.cornerRadius = 12
         contentView.layer.masksToBounds = false
 

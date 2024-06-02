@@ -42,6 +42,8 @@ final class AvatarTableViewCell: UITableViewCell {
         return label
     }()
     
+    // MARK: - Configuration
+    
     public func configure(
         clientImageView: String,
         name: String
@@ -51,7 +53,6 @@ final class AvatarTableViewCell: UITableViewCell {
 
         setupSubviews()
         configureConstraints()
-        layoutSubviews()
     }
     
     override func layoutSubviews() {

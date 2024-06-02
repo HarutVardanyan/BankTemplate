@@ -36,6 +36,19 @@ class HomeScreenViewController: UIViewController {
         return tabelView
     }()
     
+    private let myCreditsButton: UIButton = {
+        let creditsButton = UIButton()
+        
+        creditsButton.setTitle("My Credits", for: .normal)
+        creditsButton.setTitleColor(UIColor(
+            named: "cardBackground"),
+            for: .normal)
+        creditsButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        creditsButton.addTarget(self, action: #selector(myCreditsButtonTapped), for: .touchUpInside)
+        
+        return creditsButton
+    }()
+
     // MARK: - Private Propertis
     
     private var client: Client?
@@ -67,12 +80,20 @@ class HomeScreenViewController: UIViewController {
     private func setupSubviews() {
         view.addSubviews([
             userInfoTableView,
+            myCreditsButton
         ])
         view.backgroundColor = .white
     }
     
+    @objc private func myCreditsButtonTapped() {
+        let myCreditsController = MyCredits(id: id)
+        myCreditsController.modalPresentationStyle = .fullScreen
+        present(myCreditsController, animated: true, completion: nil)
+    }
+    
     private func configureSubviews() {
         configureUserInfoTableViewConstraints ()
+        configureMyCreditsButtonConstraints()
     }
     
     private func fetchClient() {
@@ -90,6 +111,16 @@ class HomeScreenViewController: UIViewController {
             CardTableViewCell.self,
             forCellReuseIdentifier:
                 CardTableViewCell.identifier
+        )
+        userInfoTableView.register(
+            AccountTableViewCell.self,
+            forCellReuseIdentifier:
+                AccountTableViewCell.identifier
+        )
+        userInfoTableView.register(
+            BalanceTableViewCell.self,
+            forCellReuseIdentifier:
+                BalanceTableViewCell.identifier
         )
     }
 }
@@ -109,6 +140,27 @@ extension HomeScreenViewController {
                 constant: Constants.Insets.trailingUserInfo
                 ),
             userInfoTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor
+                )
+        ])
+    }
+}
+
+extension HomeScreenViewController {
+    private func configureMyCreditsButtonConstraints() {
+        NSLayoutConstraint.activate([
+            myCreditsButton.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: 30
+                ),
+            myCreditsButton.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor,
+                constant: -30
+                ),
+            myCreditsButton.heightAnchor.constraint(
+                equalToConstant: 50
+                ),
+            myCreditsButton.bottomAnchor.constraint(equalTo: view.bottomAnchor,
+                constant: -100
                 )
         ])
     }
@@ -152,8 +204,30 @@ extension HomeScreenViewController: UITableViewDataSource {
                 cardName: client?.name ?? ""
             )
             return cell
-        default:
-            return UITableViewCell()
+
+        case .account:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: AccountTableViewCell.identifier,
+                for: indexPath
+            ) as? AccountTableViewCell
+            else {return UITableViewCell() }
+            
+            cell.configure(
+                accauntNumberLabel: client?.account ?? ""
+            )
+            return cell
+        
+        case .balance:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: BalanceTableViewCell.identifier,
+                for: indexPath
+            ) as? BalanceTableViewCell
+            else {return UITableViewCell() }
+            
+            cell.configure(
+                balanceLabel: client?.balance ?? 0
+            )
+            return cell
         }
     }
 }
