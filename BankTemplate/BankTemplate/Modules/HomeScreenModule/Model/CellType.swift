@@ -9,7 +9,7 @@ import Foundation
 
 public enum CellType {
     case avatar
-    case card
+    case cardNumber
     case account
     case balance
 }

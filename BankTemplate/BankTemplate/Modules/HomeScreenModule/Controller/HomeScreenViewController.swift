@@ -11,8 +11,15 @@ class HomeScreenViewController: UIViewController {
     
     // MARK: - Constants
     
+    enum Constants {
+        enum Insets {
+            static let leadingUserInfo: CGFloat = 30
+            static let trailingUserInfo: CGFloat = -30
+        }
+    }
+    
     let cellTypes: [CellType] = [
-        .avatar, .card, .account, .balance
+        .avatar, .cardNumber, .account, .balance
     ]
     
     // MARK: - Visual Components
@@ -22,8 +29,9 @@ class HomeScreenViewController: UIViewController {
         tabelView.separatorStyle = .none
         tabelView.backgroundColor = .white
         tabelView.showsVerticalScrollIndicator = false
-        userInfoTableView.dataSource = self
-        userInfoTableView.delegate = self
+        tabelView.isScrollEnabled = false
+        tabelView.dataSource = self
+        tabelView.delegate = self
         
         return tabelView
     }()
@@ -58,7 +66,7 @@ class HomeScreenViewController: UIViewController {
     
     private func setupSubviews() {
         view.addSubviews([
-            userInfoTableView
+            userInfoTableView,
         ])
         view.backgroundColor = .white
     }
@@ -78,6 +86,11 @@ class HomeScreenViewController: UIViewController {
             forCellReuseIdentifier:
                 AvatarTableViewCell.identifier
         )
+        userInfoTableView.register(
+            CardTableViewCell.self,
+            forCellReuseIdentifier:
+                CardTableViewCell.identifier
+        )
     }
 }
 
@@ -89,11 +102,11 @@ extension HomeScreenViewController {
                 ),
             userInfoTableView.leadingAnchor.constraint(
                 equalTo: view.leadingAnchor,
-                constant: 30
+                constant: Constants.Insets.leadingUserInfo
                 ),
             userInfoTableView.trailingAnchor.constraint(
                 equalTo: view.trailingAnchor,
-                constant: -30
+                constant: Constants.Insets.trailingUserInfo
                 ),
             userInfoTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor
                 )
@@ -101,12 +114,11 @@ extension HomeScreenViewController {
     }
 }
 
-
 //MARK: - HomeScreenViewController + UITableViewDataSource
 
 extension HomeScreenViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        cellTypes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -126,8 +138,22 @@ extension HomeScreenViewController: UITableViewDataSource {
                 name: client?.name ?? ""
             )
             return cell
+            
+        case .cardNumber:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: CardTableViewCell.identifier,
+                for: indexPath
+            ) as? CardTableViewCell
+            else {return UITableViewCell() }
+            
+            cell.configure(
+                cardNumber: client?.cardNumber ?? "",
+                cardDates: client?.cardDate ?? "",
+                cardName: client?.name ?? ""
+            )
+            return cell
         default:
-             return UITableViewCell()
+            return UITableViewCell()
         }
     }
 }
@@ -135,5 +161,16 @@ extension HomeScreenViewController: UITableViewDataSource {
 //MARK: - HomeScreenViewController + UITableViewDelegate
 
 extension HomeScreenViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cellType = cellTypes[indexPath.row]
+
+        switch cellType {
+        case .avatar:
+            return 150
+        case .cardNumber:
+            return 150
+        default:
+            return 50
+        }
+    }
 }

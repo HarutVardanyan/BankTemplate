@@ -13,7 +13,7 @@ class NetworkService {
         var myClient = Client(
             name: "",
             avatar: "",
-            card: "",
+            cardNumber: "",
             account: "",
             balance: 100,
             cardDate: "",

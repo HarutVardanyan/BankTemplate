@@ -11,7 +11,7 @@ import Foundation
 struct Client {
     public var name: String
     public var avatar: String
-    public var card: String
+    public var cardNumber: String
     public var account: String
     public var balance: Int
     public var cardDate: String

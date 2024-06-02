@@ -10,9 +10,9 @@ import Foundation
 struct ClientsDataStorage {
     let clients: [Client] = [
         Client(
-            name: "Harut Vardanyan",
+            name: "Harutyun Vardanyan",
             avatar: "avatar1",
-            card: "1234 5678 9012 3456",
+            cardNumber: "1234 5678 9012 3456",
             account: "account 1",
             balance: 1092,
             cardDate: "07/24",
@@ -21,7 +21,7 @@ struct ClientsDataStorage {
         Client(
             name: "Levon Shakhbazyan",
             avatar: "avatar2",
-            card: "1844 1678 9642 0156",
+            cardNumber: "1844 1678 9642 0156",
             account: "account 2",
             balance: 790,
             cardDate: "09/27",
