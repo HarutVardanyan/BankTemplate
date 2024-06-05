@@ -71,6 +71,7 @@ final class SignInViewController: UIViewController {
         textEmail.borderStyle = .roundedRect
         textEmail.layer.cornerRadius = 25
         textEmail.layer.masksToBounds = true
+        textEmail.text = "1"
         
         return textEmail
     }()
@@ -85,6 +86,7 @@ final class SignInViewController: UIViewController {
         textPass.borderStyle = .roundedRect
         textPass.layer.cornerRadius = 25
         textPass.layer.masksToBounds = true
+        textPass.text = "1"
 
         return textPass
     }()
@@ -163,9 +165,9 @@ final class SignInViewController: UIViewController {
         
         if email == Constants.LogInPassword.logIn && password == Constants.LogInPassword.password {
             
-            let logInHomeScreenViewController = HomeScreenViewController(id: "1")
-            logInHomeScreenViewController.modalPresentationStyle = .fullScreen
-            present(logInHomeScreenViewController, animated: true, completion: nil)
+            let tabBarController = TabBarController()
+            tabBarController.modalPresentationStyle = .fullScreen
+            present(tabBarController, animated: true, completion: nil)
         } else {
             showAlert(message: "Incorrect email or password")
         }

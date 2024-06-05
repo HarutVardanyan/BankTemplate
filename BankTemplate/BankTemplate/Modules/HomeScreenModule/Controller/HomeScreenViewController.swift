@@ -35,19 +35,6 @@ class HomeScreenViewController: UIViewController {
         
         return tabelView
     }()
-    
-    private let myCreditsButton: UIButton = {
-        let creditsButton = UIButton()
-        
-        creditsButton.setTitle("My Credits", for: .normal)
-        creditsButton.setTitleColor(UIColor(
-            named: "cardBackground"),
-            for: .normal)
-        creditsButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        creditsButton.addTarget(self, action: #selector(myCreditsButtonTapped), for: .touchUpInside)
-        
-        return creditsButton
-    }()
 
     // MARK: - Private Propertis
     
@@ -80,7 +67,6 @@ class HomeScreenViewController: UIViewController {
     private func setupSubviews() {
         view.addSubviews([
             userInfoTableView,
-            myCreditsButton
         ])
         view.backgroundColor = .white
     }
@@ -93,7 +79,6 @@ class HomeScreenViewController: UIViewController {
     
     private func configureSubviews() {
         configureUserInfoTableViewConstraints ()
-        configureMyCreditsButtonConstraints()
     }
     
     private func fetchClient() {
@@ -140,27 +125,6 @@ extension HomeScreenViewController {
                 constant: Constants.Insets.trailingUserInfo
                 ),
             userInfoTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor
-                )
-        ])
-    }
-}
-
-extension HomeScreenViewController {
-    private func configureMyCreditsButtonConstraints() {
-        NSLayoutConstraint.activate([
-            myCreditsButton.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor,
-                constant: 30
-                ),
-            myCreditsButton.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor,
-                constant: -30
-                ),
-            myCreditsButton.heightAnchor.constraint(
-                equalToConstant: 50
-                ),
-            myCreditsButton.bottomAnchor.constraint(equalTo: view.bottomAnchor,
-                constant: -100
                 )
         ])
     }

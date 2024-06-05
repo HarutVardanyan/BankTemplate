@@ -16,6 +16,7 @@
 		52733AE62BF7CDCE009AF4C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52733AE52BF7CDCE009AF4C0 /* SceneDelegate.swift */; };
 		52733AED2BF7CDD0009AF4C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52733AEC2BF7CDD0009AF4C0 /* Assets.xcassets */; };
 		52733AF02BF7CDD0009AF4C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52733AEE2BF7CDD0009AF4C0 /* LaunchScreen.storyboard */; };
+		5274A42D2C10A1910049018E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5274A42C2C10A1910049018E /* TabBarController.swift */; };
 		52775AE02BFF42660054BCCA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52775ADF2BFF42660054BCCA /* SignUpViewController.swift */; };
 		527ADD7E2C09D40C00A33B44 /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527ADD7D2C09D40C00A33B44 /* CellType.swift */; };
 		527B3DF82C035D9000E745D6 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527B3DF72C035D9000E745D6 /* SignInViewController.swift */; };
@@ -43,6 +44,7 @@
 		52733AEC2BF7CDD0009AF4C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52733AEF2BF7CDD0009AF4C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52733AF12BF7CDD0009AF4C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5274A42C2C10A1910049018E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		52775ADF2BFF42660054BCCA /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		527ADD7D2C09D40C00A33B44 /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
 		527B3DF72C035D9000E745D6 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -69,14 +71,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5219F8732C0CD87E007BBB93 /* CreditsPage */ = {
+		5219F8732C0CD87E007BBB93 /* CreditsModule */ = {
 			isa = PBXGroup;
 			children = (
 				5219F8762C0CD8D1007BBB93 /* Model */,
 				5219F8752C0CD8CD007BBB93 /* View */,
 				5219F8742C0CD8CB007BBB93 /* Controller */,
 			);
-			path = CreditsPage;
+			path = CreditsModule;
 			sourceTree = "<group>";
 		};
 		5219F8742C0CD8CB007BBB93 /* Controller */ = {
@@ -124,7 +126,6 @@
 				52733AF92BF7CDF9009AF4C0 /* Application */,
 				527B3DF92C035FCE00E745D6 /* Services */,
 				5280AE7A2BF7DCD100E93481 /* Modules */,
-				5219F8732C0CD87E007BBB93 /* CreditsPage */,
 				528094682C05F83B00E33F29 /* DataStorage */,
 				52733AF82BF7CDF4009AF4C0 /* SupportingFile */,
 				527B3E0B2C03852500E745D6 /* Extensions */,
@@ -158,6 +159,14 @@
 				52733AE52BF7CDCE009AF4C0 /* SceneDelegate.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		5274A42B2C10A1290049018E /* TabBarModule */ = {
+			isa = PBXGroup;
+			children = (
+				5274A42C2C10A1910049018E /* TabBarController.swift */,
+			);
+			path = TabBarModule;
 			sourceTree = "<group>";
 		};
 		52752B002C00C3230095A0BA /* HomeScreenModule */ = {
@@ -258,10 +267,12 @@
 		5280AE7A2BF7DCD100E93481 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				5274A42B2C10A1290049018E /* TabBarModule */,
 				527B3DFD2C03636200E745D6 /* ProfileModule */,
 				5280AE7D2BF7DCED00E93481 /* SignInModule */,
 				52857C082BFD325D0076D8FB /* SignUpModule */,
 				52752B002C00C3230095A0BA /* HomeScreenModule */,
+				5219F8732C0CD87E007BBB93 /* CreditsModule */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -407,6 +418,7 @@
 				52775AE02BFF42660054BCCA /* SignUpViewController.swift in Sources */,
 				527B3DFC2C03600500E745D6 /* NetworkService.swift in Sources */,
 				527B3E062C0383E300E745D6 /* AvatarTableViewCell.swift in Sources */,
+				5274A42D2C10A1910049018E /* TabBarController.swift in Sources */,
 				5219F87C2C0CFE66007BBB93 /* CreditsDataStorage.swift in Sources */,
 				527ADD7E2C09D40C00A33B44 /* CellType.swift in Sources */,
 				527B3E082C0383F900E745D6 /* CardTableViewCell.swift in Sources */,
