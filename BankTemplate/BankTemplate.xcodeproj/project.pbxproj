@@ -11,8 +11,7 @@
 		5219F8782C0CD90D007BBB93 /* MyCredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5219F8772C0CD90D007BBB93 /* MyCredits.swift */; };
 		5219F87A2C0CFA4D007BBB93 /* CreditsInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5219F8792C0CFA4D007BBB93 /* CreditsInfoTableViewCell.swift */; };
 		5219F87C2C0CFE66007BBB93 /* CreditsDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5219F87B2C0CFE66007BBB93 /* CreditsDataStorage.swift */; };
-		5219F87E2C0CFEE8007BBB93 /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5219F87D2C0CFEE8007BBB93 /* Credits.swift */; };
-		5219F8802C0CFFB1007BBB93 /* CreditsCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5219F87F2C0CFFB1007BBB93 /* CreditsCellType.swift */; };
+		5219F87E2C0CFEE8007BBB93 /* Credit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5219F87D2C0CFEE8007BBB93 /* Credit.swift */; };
 		52733AE42BF7CDCE009AF4C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52733AE32BF7CDCE009AF4C0 /* AppDelegate.swift */; };
 		52733AE62BF7CDCE009AF4C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52733AE52BF7CDCE009AF4C0 /* SceneDelegate.swift */; };
 		52733AED2BF7CDD0009AF4C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52733AEC2BF7CDD0009AF4C0 /* Assets.xcassets */; };
@@ -37,8 +36,7 @@
 		5219F8772C0CD90D007BBB93 /* MyCredits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCredits.swift; sourceTree = "<group>"; };
 		5219F8792C0CFA4D007BBB93 /* CreditsInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsInfoTableViewCell.swift; sourceTree = "<group>"; };
 		5219F87B2C0CFE66007BBB93 /* CreditsDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsDataStorage.swift; sourceTree = "<group>"; };
-		5219F87D2C0CFEE8007BBB93 /* Credits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
-		5219F87F2C0CFFB1007BBB93 /* CreditsCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsCellType.swift; sourceTree = "<group>"; };
+		5219F87D2C0CFEE8007BBB93 /* Credit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credit.swift; sourceTree = "<group>"; };
 		52733AE02BF7CDCE009AF4C0 /* BankTemplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BankTemplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52733AE32BF7CDCE009AF4C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52733AE52BF7CDCE009AF4C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,7 +98,6 @@
 		5219F8762C0CD8D1007BBB93 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5219F87F2C0CFFB1007BBB93 /* CreditsCellType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -228,7 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				527B3DFF2C0363A300E745D6 /* Clients.swift */,
-				5219F87D2C0CFEE8007BBB93 /* Credits.swift */,
+				5219F87D2C0CFEE8007BBB93 /* Credit.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -397,7 +394,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5219F87E2C0CFEE8007BBB93 /* Credits.swift in Sources */,
+				5219F87E2C0CFEE8007BBB93 /* Credit.swift in Sources */,
 				5280946A2C05F88500E33F29 /* ClientsDataStorage.swift in Sources */,
 				527B3E112C03869400E745D6 /* UIView+Extension.swift in Sources */,
 				5219F8722C0CC44A007BBB93 /* BalanceTableViewCell.swift in Sources */,
@@ -405,7 +402,6 @@
 				527B3E002C0363A300E745D6 /* Clients.swift in Sources */,
 				527B3DF82C035D9000E745D6 /* SignInViewController.swift in Sources */,
 				52733AE42BF7CDCE009AF4C0 /* AppDelegate.swift in Sources */,
-				5219F8802C0CFFB1007BBB93 /* CreditsCellType.swift in Sources */,
 				528094672C05F29700E33F29 /* HomeScreenViewController.swift in Sources */,
 				527B3E142C0387D100E745D6 /* PrepareForAutoLayout.swift in Sources */,
 				52775AE02BFF42660054BCCA /* SignUpViewController.swift in Sources */,

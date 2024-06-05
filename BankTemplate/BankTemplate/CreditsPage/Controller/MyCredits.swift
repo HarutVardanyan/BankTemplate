@@ -10,11 +10,7 @@ import UIKit
 final class MyCredits: UIViewController {
     
     // MARK: - Constants
-    
-    let creditsCellType: [CreditsCellType] = [
-        .creditsId, .creditsDate, .creditsAmount
-    ]
-    
+        
     enum Constants {
         enum Insets {
             static let top: CGFloat = 23
@@ -37,9 +33,9 @@ final class MyCredits: UIViewController {
     private lazy var creditsTableView: UITableView = {
         let tabelView = UITableView()
         tabelView.separatorStyle = .none
-        tabelView.backgroundColor = .white
+        tabelView.backgroundColor = .clear
         tabelView.showsVerticalScrollIndicator = false
-        tabelView.isScrollEnabled = false
+        tabelView.isScrollEnabled = true
         tabelView.dataSource = self
         tabelView.delegate = self
         
@@ -57,7 +53,7 @@ final class MyCredits: UIViewController {
     
     // MARK: - Private Propertis
     
-    private var credits: Credits?
+    private var credits: [Credit] = []
     let networkService = NetworkService()
     let id: String
     
@@ -77,6 +73,7 @@ final class MyCredits: UIViewController {
         
         setupSubviews()
         configureSubviews()
+        fetchCredits()
         setupTableView()
     }
     
@@ -95,6 +92,10 @@ final class MyCredits: UIViewController {
         configurePageNameLabelConstraints()
     }
     
+    private func fetchCredits() {
+        credits = networkService.fetchCredits(for: id)
+    }
+    
     private func setupTableView() {
         
         creditsTableView.register(
@@ -103,7 +104,6 @@ final class MyCredits: UIViewController {
                 CreditsInfoTableViewCell.identifier
         )
     }
-    
 }
 
 extension MyCredits {
@@ -148,46 +148,34 @@ extension MyCredits {
 
 extension MyCredits: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        creditsCellType.count
+        credits.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cellType = creditsCellType[indexPath.row]
+        let credit = credits[indexPath.row]
 
-        switch cellType {
-        case .creditsId:
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: CreditsInfoTableViewCell.identifier,
                 for: indexPath
             ) as? CreditsInfoTableViewCell
             else {return UITableViewCell() }
 
-            cell.configure(creditsIdLabel: "", dateNumberLabel: "", priceLabel: 10
-                
+            cell.configure(
+                creditsIdLabel: credit.creditId,
+                dateNumberLabel: credit.creditDate,
+                priceLabel: Int(credit.creditAmount)
             )
             return cell
-        default:
-            return UITableViewCell()
         }
     }
-}
+
     
     //MARK: - MyCredits + UITableViewDelegate
     
 extension MyCredits: UITableViewDelegate {
-        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            let cellType = creditsCellType[indexPath.row]
-            
-            switch cellType {
-            case .creditsId:
-                return 150
-            case .creditsDate:
-                return 150
-            case .creditsAmount:
-                return 150
-            default:
-                return 50
-            }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+            return 131
         }
     }

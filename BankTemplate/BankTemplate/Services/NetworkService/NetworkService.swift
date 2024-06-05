@@ -30,4 +30,21 @@ class NetworkService {
         
         return myClient
     }
+    
+    let creditsDataStorage = CreditsDataStorage()
+//
+//    func fetchCredits(for userId: String) -> [Credit] {
+//            return creditsDataStorage.credits.filter { $0.userId == userId }
+//        }
+//
+    func fetchCredits(for userId: String) -> [Credit] {
+        var userCredits: [Credit] = []
+
+        for credit in creditsDataStorage.credits {
+            if credit.userId == "1" {
+                userCredits.append(credit)
+            }
+        }
+        return userCredits
+    }
 }

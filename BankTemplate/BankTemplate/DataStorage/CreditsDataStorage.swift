@@ -8,14 +8,61 @@
 import Foundation
 
 struct CreditsDataStorage {
-    let credits: [Credits] = [
-        Credits(
-            creditsId:
-                "N 120374838",
-            creditsDate:
-                "30.05.2024",
-            creditsAmount:
-                 99
+    let credits: [Credit] = [
+        Credit(
+            creditId: "N 120374838",
+            creditDate: "30.05.2024",
+            creditAmount: 99,
+            userId: "1"
+        ),
+        Credit(
+            creditId: "N 120374838",
+            creditDate: "30.05.2024",
+            creditAmount: 99,
+            userId: "1"
+        ),
+        Credit(
+            creditId: "N 120374838",
+            creditDate: "30.05.2024",
+            creditAmount: 99,
+            userId: "1"
+        ),
+        Credit(
+            creditId: "N 120374838",
+            creditDate: "30.05.2024",
+            creditAmount: 99,
+            userId: "1"
+        ),
+        Credit(
+            creditId: "N 120374838",
+            creditDate: "30.05.2024",
+            creditAmount: 99,
+            userId: "1"
+        ),
+        Credit(
+            creditId: "N 120374838",
+            creditDate: "30.05.2024",
+            creditAmount: 99,
+            userId: "1"
+        ),
+        Credit(
+            creditId: "N 120374838",
+            creditDate: "30.05.2024",
+            creditAmount: 99,
+            userId: "2"
+        ),
+        Credit(
+            creditId: "N 120374838",
+            creditDate: "30.05.2024",
+            creditAmount: 99,
+            userId: "8"
+        ),
+        Credit(
+            creditId: "N 120374838",
+            creditDate: "30.05.2024",
+            creditAmount: 99,
+            userId: "9"
         )
     ]
 }
+
