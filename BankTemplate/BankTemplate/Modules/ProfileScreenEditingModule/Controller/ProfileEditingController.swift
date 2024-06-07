@@ -18,6 +18,9 @@ final class ProfileEditingController: UIViewController {
             static let trailing: CGFloat = -30
             static let topPageLabel: CGFloat = 55
             static let heightPageLabel: CGFloat = 41
+            static let topAClientImageConstans: CGFloat = 30
+            static let widthClientImageConstans: CGFloat = 100
+            static let heightClientImageConstans: CGFloat = 100
         }
         enum Color {
             static let creditsBackgrundColor = "MyCreditsBackgrundColor"
@@ -40,6 +43,22 @@ final class ProfileEditingController: UIViewController {
         tabelView.delegate = self
         
         return tabelView
+    }()
+    
+    let clientImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = Constants.Insets.widthClientImageConstans / 2
+
+        return imageView
+    }()
+    
+    let nameLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.textColor = .black
+        
+        return label
     }()
     
     // MARK: - Private Propertis
@@ -66,6 +85,7 @@ final class ProfileEditingController: UIViewController {
         configureSubviews()
         fetchClient()
         setupTableView()
+        updateUI(with: client!)
     }
     
     // MARK: - Private Methodes
@@ -73,17 +93,32 @@ final class ProfileEditingController: UIViewController {
     private func setupSubviews() {
         view.addSubviews([
             profileEditTableView,
+            clientImageView,
+            nameLabel,
         ])
         view.backgroundColor = .white
     }
     
     private func configureSubviews() {
         configureProfileEditingTableViewConstraints ()
+        configureClientImageViewConstraints()
+        configureNameLabelConstraints()
     }
     
     private func fetchClient() {
         client = networkService.fetchClients(id: id)
     }
+    
+    private func updateUI(with client: Client) {
+            self.client = client
+            nameLabel.text = client.name
+            if let avatarImage = UIImage(named: client.avatar) {
+                clientImageView.image = avatarImage
+            } else {
+                clientImageView.image = UIImage(systemName: "person.circle") // Default image if avatar not found
+            }
+            profileEditTableView.reloadData()
+        }
     
     private func setupTableView() {
         
@@ -93,13 +128,15 @@ final class ProfileEditingController: UIViewController {
                 ProfileEditingTableViewCell.identifier
         )
     }
+    
+    
 }
 
 extension ProfileEditingController {
     private func configureProfileEditingTableViewConstraints() {
         NSLayoutConstraint.activate([
             profileEditTableView.topAnchor.constraint(
-                equalTo: view.topAnchor,
+                equalTo: clientImageView.bottomAnchor,
                 constant: Constants.Insets.top
                 ),
             profileEditTableView.leadingAnchor.constraint(
@@ -114,6 +151,43 @@ extension ProfileEditingController {
                 )
         ])
     }
+    
+    private func configureClientImageViewConstraints() {
+        NSLayoutConstraint.activate([
+            clientImageView.topAnchor.constraint(
+                equalTo: view.safeAreaLayoutGuide.topAnchor,
+                constant: Constants.Insets.topAClientImageConstans
+            ),
+            clientImageView.leadingAnchor.constraint(
+                equalTo: profileEditTableView.leadingAnchor,
+                constant: Constants.Insets.leading
+            ),
+            clientImageView.widthAnchor.constraint(
+                equalToConstant: Constants.Insets.widthClientImageConstans
+            ),
+            clientImageView.heightAnchor.constraint(
+                equalToConstant: Constants.Insets.heightClientImageConstans
+            )
+        ])
+    }
+    
+    private func configureNameLabelConstraints() {
+        NSLayoutConstraint.activate([
+            nameLabel.centerYAnchor.constraint(
+                equalTo: clientImageView.centerYAnchor
+            ),
+            
+            nameLabel.trailingAnchor.constraint(
+                equalTo: profileEditTableView.trailingAnchor,
+                constant: Constants.Insets.trailing
+            ),
+            nameLabel.heightAnchor.constraint(
+                equalToConstant: Constants.Insets.leading
+            )
+        ])
+    }
+    
+    
 }
 
 //MARK: - MyCredits + UITableViewDataSource
@@ -139,20 +213,17 @@ extension ProfileEditingController: UITableViewDataSource {
             ageLabel: Int(client.Age),
             addressLabel: client.Address,
             passwordLabel: client.Password,
-            genderLabel: client.Gender,
-            nameLabel: client.name,
-            clientImageView: client.avatar
+            genderLabel: client.Gender
             )
             return cell
         }
     }
 
-    
-    //MARK: - MyCredits + UITableViewDelegate
+//MARK: - MyCredits + UITableViewDelegate
     
 extension ProfileEditingController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-            return 10
+            return 1
         }
     }

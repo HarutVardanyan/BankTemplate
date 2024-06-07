@@ -20,9 +20,6 @@ final class ProfileEditingTableViewCell: UITableViewCell {
             static let trailing: CGFloat = -30
             static let height: CGFloat = 30
             static let topAge: CGFloat = 63
-            static let topAClientImageConstans: CGFloat = 30
-            static let widthClientImageConstans: CGFloat = 100
-            static let heightClientImageConstans: CGFloat = 100
         }
         enum Texts{
             static let AgeTitleLabel = "Age"
@@ -33,20 +30,6 @@ final class ProfileEditingTableViewCell: UITableViewCell {
     }
     
     // MARK: - Visual Components
-    
-    let clientImageView: UIImageView = {
-        let imageView = UIImageView()
-        
-        return imageView
-    }()
-    
-    let nameLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 16, weight: .bold)
-        label.textColor = .black
-        
-        return label
-    }()
     
     let ageTitleLabel: UILabel = {
         let label = UILabel()
@@ -122,36 +105,23 @@ final class ProfileEditingTableViewCell: UITableViewCell {
         ageLabel: Int,
         addressLabel: String,
         passwordLabel: String,
-        genderLabel: String,
-        nameLabel: String,
-        clientImageView: String
-        
+        genderLabel: String
     ) {
         self.ageLabel.text = String(ageLabel)
         self.addressLabel.text = addressLabel
         self.passwordLabel.text = passwordLabel
         self.genderLabel.text = genderLabel
-        self.nameLabel.text = nameLabel
-        self.clientImageView.image = UIImage(named: clientImageView)
 
         setupSubviews()
         configureConstraints()
     }
-    
-    override func layoutSubviews() {
-            super.layoutSubviews()
-            clientImageView.layer.cornerRadius = clientImageView.frame.width / 2
-            clientImageView.clipsToBounds = true
-        }
-    
+
     func setupSubviews() {
         selectionStyle = .none
         contentView.backgroundColor = .white
         contentView.layer.masksToBounds = false
         
         contentView.addSubviews([
-            clientImageView,
-            nameLabel,
             ageTitleLabel,
             addressTitleLabel,
             passwordTitleLabel,
@@ -166,8 +136,6 @@ final class ProfileEditingTableViewCell: UITableViewCell {
     //MARK: - Private Methods
     
     private func configureConstraints() {
-        configureClientImageViewConstraints()
-        configureNameLabelConstraints()
         configureAgeTitleLabelConstraints()
         configureAddressTitleLabelConstraints()
         configurePasswordTitleLabelConstraints()
@@ -181,45 +149,10 @@ final class ProfileEditingTableViewCell: UITableViewCell {
 
 extension ProfileEditingTableViewCell {
     
-    private func configureClientImageViewConstraints() {
-        NSLayoutConstraint.activate([
-            clientImageView.topAnchor.constraint(
-                equalTo: contentView.topAnchor,
-                constant: Constans.Insets.topAClientImageConstans
-            ),
-            clientImageView.leadingAnchor.constraint(
-                equalTo: contentView.leadingAnchor,
-                constant: Constans.Insets.leading
-            ),
-            clientImageView.widthAnchor.constraint(
-                equalToConstant: Constans.Insets.widthClientImageConstans
-            ),
-            clientImageView.heightAnchor.constraint(
-                equalToConstant: Constans.Insets.heightClientImageConstans
-            )
-        ])
-    }
-    
-    private func configureNameLabelConstraints() {
-        NSLayoutConstraint.activate([
-            nameLabel.centerYAnchor.constraint(
-                equalTo: clientImageView.centerYAnchor
-            ),
-            
-            nameLabel.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor,
-                constant: Constans.Insets.trailing
-            ),
-            nameLabel.heightAnchor.constraint(
-                equalToConstant: Constans.Insets.height
-            )
-        ])
-    }
-    
     private func configureAgeTitleLabelConstraints() {
         NSLayoutConstraint.activate([
             ageTitleLabel.topAnchor.constraint(
-                equalTo: clientImageView.bottomAnchor,
+                equalTo: contentView.bottomAnchor,
                 constant: Constans.Insets.topAge
             ),
             ageTitleLabel.leadingAnchor.constraint(
