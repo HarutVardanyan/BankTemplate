@@ -1,13 +1,13 @@
 //
-//  MyCredits.swift
+//  ProfileEditingController.swift
 //  BankTemplate
 //
-//  Created by MacBook Pro on 6/2/24.
+//  Created by MacBook Pro on 6/7/24.
 //
 
 import UIKit
 
-final class MyCredits: UIViewController {
+final class ProfileEditingController: UIViewController {
     
     // MARK: - Constants
         
@@ -30,30 +30,21 @@ final class MyCredits: UIViewController {
     
     // MARK: - Visual Components
     
-    private lazy var creditsTableView: UITableView = {
+    private lazy var profileEditTableView: UITableView = {
         let tabelView = UITableView()
         tabelView.separatorStyle = .none
         tabelView.backgroundColor = .clear
         tabelView.showsVerticalScrollIndicator = false
-        tabelView.isScrollEnabled = true
+        tabelView.isScrollEnabled = false
         tabelView.dataSource = self
         tabelView.delegate = self
         
         return tabelView
     }()
     
-    let pageNameLabel: UILabel = {
-        let label = UILabel()
-        label.text = Constants.Texts.pagenaameText
-        label.font = .systemFont(ofSize: 25, weight: .bold )
-        label.textColor = UIColor(named: Constants.Color.pageNameColor)
-        
-        return label
-    }()
-    
     // MARK: - Private Propertis
     
-    private var credits: [Credit] = []
+    private var client: Client?
     let networkService = NetworkService()
     let id: String
     
@@ -65,7 +56,7 @@ final class MyCredits: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+   
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -73,7 +64,7 @@ final class MyCredits: UIViewController {
         
         setupSubviews()
         configureSubviews()
-        fetchCredits()
+        fetchClient()
         setupTableView()
     }
     
@@ -81,90 +72,76 @@ final class MyCredits: UIViewController {
     
     private func setupSubviews() {
         view.addSubviews([
-            creditsTableView,
-            pageNameLabel
+            profileEditTableView,
         ])
-        view.backgroundColor = UIColor(named: Constants.Color.creditsBackgrundColor)
+        view.backgroundColor = .white
     }
     
     private func configureSubviews() {
-        configureUserInfoTableViewConstraints ()
-        configurePageNameLabelConstraints()
+        configureProfileEditingTableViewConstraints ()
     }
     
-    private func fetchCredits() {
-        credits = networkService.fetchCredits(for: id)
+    private func fetchClient() {
+        client = networkService.fetchClients(id: id)
     }
     
     private func setupTableView() {
         
-        creditsTableView.register(
-            CreditsInfoTableViewCell.self,
+        profileEditTableView.register(
+            ProfileEditingTableViewCell.self,
             forCellReuseIdentifier:
-                CreditsInfoTableViewCell.identifier
+                ProfileEditingTableViewCell.identifier
         )
     }
 }
 
-extension MyCredits {
-    private func configureUserInfoTableViewConstraints() {
+extension ProfileEditingController {
+    private func configureProfileEditingTableViewConstraints() {
         NSLayoutConstraint.activate([
-            creditsTableView.topAnchor.constraint(
-                equalTo: pageNameLabel.bottomAnchor,
+            profileEditTableView.topAnchor.constraint(
+                equalTo: view.topAnchor,
                 constant: Constants.Insets.top
                 ),
-            creditsTableView.leadingAnchor.constraint(
+            profileEditTableView.leadingAnchor.constraint(
                 equalTo: view.leadingAnchor,
                 constant: Constants.Insets.leading
                 ),
-            creditsTableView.trailingAnchor.constraint(
+            profileEditTableView.trailingAnchor.constraint(
                 equalTo: view.trailingAnchor,
                 constant: Constants.Insets.trailing
                 ),
-            creditsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor
+            profileEditTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor
                 )
-        ])
-    }
-}
-
-extension MyCredits {
-    private func configurePageNameLabelConstraints() {
-        NSLayoutConstraint.activate([
-            pageNameLabel.topAnchor.constraint(
-                equalTo: view.topAnchor,
-                constant: Constants.Insets.topPageLabel
-            ),
-            pageNameLabel.centerXAnchor.constraint(
-                equalTo: view.centerXAnchor
-            ),
-            pageNameLabel.heightAnchor.constraint(
-                equalToConstant: Constants.Insets.heightPageLabel
-            )
         ])
     }
 }
 
 //MARK: - MyCredits + UITableViewDataSource
 
-extension MyCredits: UITableViewDataSource {
+extension ProfileEditingController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        credits.count
+        1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let credit = credits[indexPath.row]
-
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: CreditsInfoTableViewCell.identifier,
+                withIdentifier: ProfileEditingTableViewCell.identifier,
                 for: indexPath
-            ) as? CreditsInfoTableViewCell
+            ) as? ProfileEditingTableViewCell
             else {return UITableViewCell() }
+        
+        guard let client = client else {
+            return UITableViewCell()
+        }
 
-            cell.configure(
-                creditsIdLabel: credit.creditId,
-                dateNumberLabel: credit.creditDate,
-                priceLabel: Int(credit.creditAmount)
+        cell.configure(
+            ageLabel: Int(client.Age),
+            addressLabel: client.Address,
+            passwordLabel: client.Password,
+            genderLabel: client.Gender,
+            nameLabel: client.name,
+            clientImageView: client.avatar
             )
             return cell
         }
@@ -173,9 +150,9 @@ extension MyCredits: UITableViewDataSource {
     
     //MARK: - MyCredits + UITableViewDelegate
     
-extension MyCredits: UITableViewDelegate {
+extension ProfileEditingController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-            return 131
+            return 10
         }
     }

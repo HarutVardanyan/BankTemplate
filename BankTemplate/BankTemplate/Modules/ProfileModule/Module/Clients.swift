@@ -16,4 +16,8 @@ struct Client {
     public var balance: Int
     public var cardDate: String
     public var id: String
+    public var Age: Int
+    public var Address: String
+    public var Password: String
+    public var Gender: String
 }

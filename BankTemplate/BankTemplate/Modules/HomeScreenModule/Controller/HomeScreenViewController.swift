@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeScreenViewController: UIViewController {
+final class HomeScreenViewController: UIViewController {
     
     // MARK: - Constants
     
@@ -72,7 +72,7 @@ class HomeScreenViewController: UIViewController {
     }
     
     @objc private func myCreditsButtonTapped() {
-        let myCreditsController = MyCredits(id: id)
+        let myCreditsController = MyCreditsController(id: id)
         myCreditsController.modalPresentationStyle = .fullScreen
         present(myCreditsController, animated: true, completion: nil)
     }
@@ -209,6 +209,19 @@ extension HomeScreenViewController: UITableViewDelegate {
             return 150
         default:
             return 50
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cellType = cellTypes[indexPath.row]
+        
+        switch cellType {
+        case .avatar:
+            let detailVC = ProfileEditingController(id: id)
+            navigationController?.pushViewController(detailVC, animated: true)
+            
+        default:
+            break
         }
     }
 }

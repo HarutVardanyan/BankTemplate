@@ -16,7 +16,11 @@ struct ClientsDataStorage {
             account: "123456789",
             balance: 1092,
             cardDate: "07/24",
-            id: "1"
+            id: "1",
+            Age: 31,
+            Address: "Armenia/Fantastic Street",
+            Password: "Har",
+            Gender: "Male"
         ),
         Client(
             name: "Levon Shakhbazyan",
@@ -25,7 +29,11 @@ struct ClientsDataStorage {
             account: "account 2",
             balance: 790,
             cardDate: "09/27",
-            id: "2"
+            id: "2",
+            Age: 31,
+            Address: "Armenia/Bomb Street",
+            Password: "Lyov",
+            Gender: "Male"
         )
     ]
 }

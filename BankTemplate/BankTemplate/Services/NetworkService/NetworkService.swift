@@ -17,7 +17,11 @@ class NetworkService {
             account: "",
             balance: 100,
             cardDate: "",
-            id: ""
+            id: "",
+            Age: 10,
+            Address: "",
+            Password: "",
+            Gender: ""
         )
         
         let clients = clientsDataStorage.clients

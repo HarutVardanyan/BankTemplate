@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5219F8722C0CC44A007BBB93 /* BalanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5219F8712C0CC44A007BBB93 /* BalanceTableViewCell.swift */; };
-		5219F8782C0CD90D007BBB93 /* MyCredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5219F8772C0CD90D007BBB93 /* MyCredits.swift */; };
+		5219F8782C0CD90D007BBB93 /* MyCreditsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5219F8772C0CD90D007BBB93 /* MyCreditsController.swift */; };
 		5219F87A2C0CFA4D007BBB93 /* CreditsInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5219F8792C0CFA4D007BBB93 /* CreditsInfoTableViewCell.swift */; };
 		5219F87C2C0CFE66007BBB93 /* CreditsDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5219F87B2C0CFE66007BBB93 /* CreditsDataStorage.swift */; };
 		5219F87E2C0CFEE8007BBB93 /* Credit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5219F87D2C0CFEE8007BBB93 /* Credit.swift */; };
@@ -29,12 +29,14 @@
 		527B3E142C0387D100E745D6 /* PrepareForAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527B3E132C0387D100E745D6 /* PrepareForAutoLayout.swift */; };
 		528094672C05F29700E33F29 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528094662C05F29700E33F29 /* HomeScreenViewController.swift */; };
 		5280946A2C05F88500E33F29 /* ClientsDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528094692C05F88500E33F29 /* ClientsDataStorage.swift */; };
+		528495F22C13427500E051E1 /* ProfileEditingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528495F12C13427500E051E1 /* ProfileEditingTableViewCell.swift */; };
+		528495F42C13429600E051E1 /* ProfileEditingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528495F32C13429600E051E1 /* ProfileEditingController.swift */; };
 		52D513982BFCB80D00CB6A9D /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52D513972BFCB80D00CB6A9D /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5219F8712C0CC44A007BBB93 /* BalanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceTableViewCell.swift; sourceTree = "<group>"; };
-		5219F8772C0CD90D007BBB93 /* MyCredits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCredits.swift; sourceTree = "<group>"; };
+		5219F8772C0CD90D007BBB93 /* MyCreditsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCreditsController.swift; sourceTree = "<group>"; };
 		5219F8792C0CFA4D007BBB93 /* CreditsInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsInfoTableViewCell.swift; sourceTree = "<group>"; };
 		5219F87B2C0CFE66007BBB93 /* CreditsDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsDataStorage.swift; sourceTree = "<group>"; };
 		5219F87D2C0CFEE8007BBB93 /* Credit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credit.swift; sourceTree = "<group>"; };
@@ -57,6 +59,8 @@
 		527B3E132C0387D100E745D6 /* PrepareForAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareForAutoLayout.swift; sourceTree = "<group>"; };
 		528094662C05F29700E33F29 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		528094692C05F88500E33F29 /* ClientsDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsDataStorage.swift; sourceTree = "<group>"; };
+		528495F12C13427500E051E1 /* ProfileEditingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditingTableViewCell.swift; sourceTree = "<group>"; };
+		528495F32C13429600E051E1 /* ProfileEditingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditingController.swift; sourceTree = "<group>"; };
 		52D513972BFCB80D00CB6A9D /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,7 +88,7 @@
 		5219F8742C0CD8CB007BBB93 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5219F8772C0CD90D007BBB93 /* MyCredits.swift */,
+				5219F8772C0CD90D007BBB93 /* MyCreditsController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -273,6 +277,7 @@
 				52857C082BFD325D0076D8FB /* SignUpModule */,
 				52752B002C00C3230095A0BA /* HomeScreenModule */,
 				5219F8732C0CD87E007BBB93 /* CreditsModule */,
+				528495ED2C1341F000E051E1 /* ProfileScreenEditingModule */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -296,6 +301,39 @@
 			sourceTree = "<group>";
 		};
 		5280AE802BF7DD0D00E93481 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		528495ED2C1341F000E051E1 /* ProfileScreenEditingModule */ = {
+			isa = PBXGroup;
+			children = (
+				528495F02C13422600E051E1 /* Model */,
+				528495EF2C13422200E051E1 /* View */,
+				528495EE2C13421E00E051E1 /* Controller */,
+			);
+			path = ProfileScreenEditingModule;
+			sourceTree = "<group>";
+		};
+		528495EE2C13421E00E051E1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				528495F32C13429600E051E1 /* ProfileEditingController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		528495EF2C13422200E051E1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				528495F12C13427500E051E1 /* ProfileEditingTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		528495F02C13422600E051E1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -415,6 +453,7 @@
 				52733AE42BF7CDCE009AF4C0 /* AppDelegate.swift in Sources */,
 				528094672C05F29700E33F29 /* HomeScreenViewController.swift in Sources */,
 				527B3E142C0387D100E745D6 /* PrepareForAutoLayout.swift in Sources */,
+				528495F42C13429600E051E1 /* ProfileEditingController.swift in Sources */,
 				52775AE02BFF42660054BCCA /* SignUpViewController.swift in Sources */,
 				527B3DFC2C03600500E745D6 /* NetworkService.swift in Sources */,
 				527B3E062C0383E300E745D6 /* AvatarTableViewCell.swift in Sources */,
@@ -422,7 +461,8 @@
 				5219F87C2C0CFE66007BBB93 /* CreditsDataStorage.swift in Sources */,
 				527ADD7E2C09D40C00A33B44 /* CellType.swift in Sources */,
 				527B3E082C0383F900E745D6 /* CardTableViewCell.swift in Sources */,
-				5219F8782C0CD90D007BBB93 /* MyCredits.swift in Sources */,
+				5219F8782C0CD90D007BBB93 /* MyCreditsController.swift in Sources */,
+				528495F22C13427500E051E1 /* ProfileEditingTableViewCell.swift in Sources */,
 				52733AE62BF7CDCE009AF4C0 /* SceneDelegate.swift in Sources */,
 				5219F87A2C0CFA4D007BBB93 /* CreditsInfoTableViewCell.swift in Sources */,
 			);
