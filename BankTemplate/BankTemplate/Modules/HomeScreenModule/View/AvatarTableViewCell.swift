@@ -12,18 +12,17 @@ final class AvatarTableViewCell: UITableViewCell {
     
     // MARK: - Constants
     
-    let identifier = "AvatarTableViewCell"
+   static let identifier = "AvatarTableViewCell"
     
     enum Constans {
-        enum Text{
-            static let title = "customers"
-        }
-        
         enum Insets {
-            static let topInsetImage: CGFloat = 5
-            static let leadingImage: CGFloat = 5
-            static let ImageHeight: CGFloat = 50
-            static let imageWidt: CGFloat = 50
+            static let topAClientImageConstans: CGFloat = 30
+            static let leadingClientImageConstans: CGFloat = 15
+            static let widthClientImageConstans: CGFloat = 100
+            static let heightClientImageConstans: CGFloat = 100
+            static let leadingClientNameLabelConstans: CGFloat = 20
+            static let trailingClientNameLabelConstans: CGFloat = -15
+            static let heightClientNameLabelConstans: CGFloat = 40
         }
     }
     
@@ -37,11 +36,13 @@ final class AvatarTableViewCell: UITableViewCell {
     
     let nameLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 16)
+        label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = .black
         
         return label
     }()
+    
+    // MARK: - Configuration
     
     public func configure(
         clientImageView: String,
@@ -53,6 +54,12 @@ final class AvatarTableViewCell: UITableViewCell {
         setupSubviews()
         configureConstraints()
     }
+    
+    override func layoutSubviews() {
+            super.layoutSubviews()
+            clientImageView.layer.cornerRadius = clientImageView.frame.width / 2
+            clientImageView.clipsToBounds = true
+        }
     
     func setupSubviews() {
         selectionStyle = .none
@@ -77,37 +84,36 @@ final class AvatarTableViewCell: UITableViewCell {
             NSLayoutConstraint.activate([
                 clientImageView.topAnchor.constraint(
                     equalTo: contentView.topAnchor,
-                    constant: Constans.Insets.topInsetImage
+                    constant: Constans.Insets.topAClientImageConstans
                 ),
                 clientImageView.leadingAnchor.constraint(
                     equalTo: contentView.leadingAnchor,
-                    constant: Constans.Insets.leadingImage
+                    constant: Constans.Insets.leadingClientImageConstans
                 ),
                 clientImageView.widthAnchor.constraint(
-                    equalToConstant: Constans.Insets.imageWidt
+                    equalToConstant: Constans.Insets.widthClientImageConstans
                 ),
                 clientImageView.heightAnchor.constraint(
-                    equalToConstant: Constans.Insets.ImageHeight
+                    equalToConstant: Constans.Insets.heightClientImageConstans
                 )
             ])
         }
         
         private func configureNameLabelConstraints() {
             NSLayoutConstraint.activate([
-                nameLabel.topAnchor.constraint(
-                    equalTo: contentView.topAnchor,
-                    constant: 100
+                nameLabel.centerYAnchor.constraint(
+                    equalTo: clientImageView.centerYAnchor
                 ),
                 nameLabel.leadingAnchor.constraint(
                     equalTo: clientImageView.trailingAnchor,
-                    constant: 100
+                    constant: Constans.Insets.leadingClientNameLabelConstans
                 ),
                 nameLabel.trailingAnchor.constraint(
                     equalTo: contentView.trailingAnchor,
-                    constant: 50
+                    constant: Constans.Insets.trailingClientNameLabelConstans
                 ),
                 nameLabel.heightAnchor.constraint(
-                    equalToConstant: 50
+                    equalToConstant: Constans.Insets.heightClientNameLabelConstans
                 )
             ])
         }
