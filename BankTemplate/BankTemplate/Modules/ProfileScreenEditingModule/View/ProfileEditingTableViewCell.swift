@@ -19,7 +19,6 @@ final class ProfileEditingTableViewCell: UITableViewCell {
             static let leading: CGFloat = 30
             static let trailing: CGFloat = -30
             static let height: CGFloat = 30
-            static let topAge: CGFloat = 63
         }
         enum Texts{
             static let AgeTitleLabel = "Age"
@@ -152,8 +151,8 @@ extension ProfileEditingTableViewCell {
     private func configureAgeTitleLabelConstraints() {
         NSLayoutConstraint.activate([
             ageTitleLabel.topAnchor.constraint(
-                equalTo: contentView.bottomAnchor,
-                constant: Constans.Insets.topAge
+                equalTo: contentView.topAnchor,
+                constant: Constans.Insets.topInset
             ),
             ageTitleLabel.leadingAnchor.constraint(
                 equalTo: contentView.leadingAnchor,

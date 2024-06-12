@@ -10,10 +10,10 @@ import UIKit
 final class ProfileEditingController: UIViewController {
     
     // MARK: - Constants
-        
+    
     enum Constants {
         enum Insets {
-            static let top: CGFloat = 23
+            static let top: CGFloat = 17
             static let leading: CGFloat = 30
             static let trailing: CGFloat = -30
             static let topPageLabel: CGFloat = 55
@@ -21,6 +21,7 @@ final class ProfileEditingController: UIViewController {
             static let topAClientImageConstans: CGFloat = 30
             static let widthClientImageConstans: CGFloat = 100
             static let heightClientImageConstans: CGFloat = 100
+            static let topButtonLabel: CGFloat = 10
         }
         enum Color {
             static let creditsBackgrundColor = "MyCreditsBackgrundColor"
@@ -49,7 +50,7 @@ final class ProfileEditingController: UIViewController {
         let imageView = UIImageView()
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = Constants.Insets.widthClientImageConstans / 2
-
+        
         return imageView
     }()
     
@@ -59,6 +60,18 @@ final class ProfileEditingController: UIViewController {
         label.textColor = .black
         
         return label
+    }()
+    
+    private let editPhotoButton = {
+        let photoEditButton = UIButton()
+        
+        photoEditButton.setTitle("Edit Photo", for: .normal)
+        photoEditButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        photoEditButton.setTitleColor(UIColor(named: "EditButtonTitleColor"), for: .normal)
+        photoEditButton.addTarget(self, action: #selector(editPhotoButtonTapped), for: .touchUpInside)
+        
+        
+        return photoEditButton
     }()
     
     // MARK: - Private Propertis
@@ -75,7 +88,7 @@ final class ProfileEditingController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-   
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -95,6 +108,7 @@ final class ProfileEditingController: UIViewController {
             profileEditTableView,
             clientImageView,
             nameLabel,
+            editPhotoButton
         ])
         view.backgroundColor = .white
     }
@@ -103,6 +117,7 @@ final class ProfileEditingController: UIViewController {
         configureProfileEditingTableViewConstraints ()
         configureClientImageViewConstraints()
         configureNameLabelConstraints()
+        configureEditPhotoButtonConstraints()
     }
     
     private func fetchClient() {
@@ -110,15 +125,15 @@ final class ProfileEditingController: UIViewController {
     }
     
     private func updateUI(with client: Client) {
-            self.client = client
-            nameLabel.text = client.name
-            if let avatarImage = UIImage(named: client.avatar) {
-                clientImageView.image = avatarImage
-            } else {
-                clientImageView.image = UIImage(systemName: "person.circle") // Default image if avatar not found
-            }
-            profileEditTableView.reloadData()
+        self.client = client
+        nameLabel.text = client.name
+        if let avatarImage = UIImage(named: client.avatar) {
+            clientImageView.image = avatarImage
+        } else {
+            clientImageView.image = UIImage(systemName: "person.circle") // Default image if avatar not found
         }
+        profileEditTableView.reloadData()
+    }
     
     private func setupTableView() {
         
@@ -129,14 +144,20 @@ final class ProfileEditingController: UIViewController {
         )
     }
     
-    
+    @objc private func editPhotoButtonTapped() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = .photoLibrary
+        present(imagePickerController, animated: true, completion: nil)
+    }
 }
+
 
 extension ProfileEditingController {
     private func configureProfileEditingTableViewConstraints() {
         NSLayoutConstraint.activate([
             profileEditTableView.topAnchor.constraint(
-                equalTo: clientImageView.bottomAnchor,
+                equalTo: editPhotoButton.bottomAnchor,
                 constant: Constants.Insets.top
                 ),
             profileEditTableView.leadingAnchor.constraint(
@@ -187,8 +208,41 @@ extension ProfileEditingController {
         ])
     }
     
-    
+    private func configureEditPhotoButtonConstraints(){
+        NSLayoutConstraint.activate([
+            editPhotoButton.topAnchor.constraint(
+                equalTo: clientImageView.bottomAnchor,
+                constant: Constants.Insets.topButtonLabel
+            ),
+            editPhotoButton.leadingAnchor.constraint(
+                equalTo: profileEditTableView.leadingAnchor,
+                constant: Constants.Insets.leading
+            ),
+            editPhotoButton.heightAnchor.constraint(
+                equalToConstant: Constants.Insets.leading
+            ),
+            editPhotoButton.widthAnchor.constraint(
+                equalToConstant: Constants.Insets.widthClientImageConstans
+            )
+        ])
+    }
 }
+
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+
+extension ProfileEditingController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let selectedImage = info[.originalImage] as? UIImage {
+            clientImageView.image = selectedImage
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+}
+
 
 //MARK: - MyCredits + UITableViewDataSource
 
